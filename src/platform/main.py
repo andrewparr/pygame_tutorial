@@ -46,7 +46,6 @@ class Game:
             self.player.pos.y = hits[0].rect.top
             self.player.vel.y = 0
 
-
     def events(self):
         # Game Loop - events
         for event in pg.event.get():
