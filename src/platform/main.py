@@ -49,7 +49,7 @@ class Game:
             p = Platform(self, *plat)
             self.all_sprites.add(p)
             self.platforms.add(p)
-        pg.mixer.music.load(path.join(self.snd_dir, 'happytune.mp3'))
+        pg.mixer.music.load(path.join(self.snd_dir, 'happytune.ogg'))
         self.run()        
 
     def run(self):
@@ -130,7 +130,7 @@ class Game:
 
     def show_start_screen(self):
         # game splash / start screen
-        pg.mixer.music.load(path.join(self.snd_dir, 'Yippee.wav'))
+        pg.mixer.music.load(path.join(self.snd_dir, 'Yippee.ogg'))
         pg.mixer.music.play(loops=-1)
         self.screen.fill(BGCOLOR)
         self.draw_text(TITLE, 48, WHITE, WIDTH / 2, HEIGHT / 4)
@@ -145,7 +145,7 @@ class Game:
         # game over / continue
         if not self.running:
             return
-        pg.mixer.music.load(path.join(self.snd_dir, 'Yippee.wav'))
+        pg.mixer.music.load(path.join(self.snd_dir, 'Yippee.ogg'))
         pg.mixer.music.play(loops=-1)
         self.screen.fill(BGCOLOR)
         self.draw_text("GAME OVER", 48, WHITE, WIDTH / 2, HEIGHT / 4)
