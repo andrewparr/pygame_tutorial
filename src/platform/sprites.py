@@ -109,7 +109,6 @@ class Player(pg.sprite.Sprite):
                     self.image = self.walking_frames_l[self.current_frame]
                 self.rect = self.image.get_rect()
                 self.rect.bottom = bottom
-
         # show idle animation
         if not self.jumping and not self.walking:
             if now - self.last_update > 350:
@@ -119,6 +118,7 @@ class Player(pg.sprite.Sprite):
                 self.image = self.standing_frames[self.current_frame]
                 self.rect = self.image.get_rect()
                 self.rect.bottom = bottom
+        self.mask = pg.mask.from_surface(self.image)
 
 class Platform(pg.sprite.Sprite):
     def __init__(self, game, x, y):
@@ -188,6 +188,7 @@ class Mob(pg.sprite.Sprite):
         else:
             self.image = self.image_down
         self.rect = self.image.get_rect()
+        self.mask = pg.mask.from_surface(self.image)
         self.rect.center = center
         self.rect.y += self.vy
         if self.rect.left > WIDTH + 100 or self.rect.right < -100:
