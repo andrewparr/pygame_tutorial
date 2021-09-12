@@ -19,7 +19,9 @@ class Game:
 
     def load_data(self):
         game_folder = path.dirname(__file__)
-        self.map = Map(path.join(game_folder, 'map2.txt'))
+        img_folder = path.join(game_folder, 'img')
+        self.map = Map(path.join(game_folder, 'map3.txt'))
+        self.player_img = pg.image.load(path.join(img_folder, PLAYER_IMG)).convert_alpha()
 
     def new(self):
         # initialise all variables and do all setup for a new game

@@ -1,3 +1,5 @@
+import pygame as pg
+
 # define some colours
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
@@ -14,9 +16,12 @@ FPS = 60
 TITLE = "Tilemap Demo"
 BGCOLOR = DARKGREY
 
-TILESIZE = 32
+TILESIZE = 64
 GRIDWIDTH = WIDTH / TILESIZE
 GRIDHEIGHT = HEIGHT / TILESIZE
 
 # Player settings
 PLAYER_SPEED = 300
+PLAYER_ROT_SPEED = 250.0
+PLAYER_IMG = 'manBlue_gun.png'
+PLAYER_HIT_RECT = pg.Rect(0, 0, 35, 35)
