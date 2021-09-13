@@ -64,6 +64,8 @@ class Game:
         self.draw_grid()
         for sprite in self.all_sprites:
             self.screen.blit(sprite.image, self.camera.apply(sprite))
+        # pg.draw.rect(self.screen, WHITE, self.camera.apply(self.player), 2)
+        # pg.draw.rect(self.screen, WHITE, self.player.hit_rect, 2)
         pg.display.flip()
 
     def events(self):
