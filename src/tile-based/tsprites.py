@@ -2,6 +2,7 @@ import pygame as pg
 from random import uniform, choice, randint
 from tsettings import *
 from tilemap import collide_hit_rect
+import pytweening as tween
 vec = pg.math.Vector2
 
 def collide_with_walls(sprite, group, dir):
@@ -30,7 +31,7 @@ class Player(pg.sprite.Sprite):
         self.groups = game.all_sprites
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
-        self.image = game.player_img        
+        self.image = game.player_img
         self.rect = self.image.get_rect()
         self.rect.center = (x, y)
         self.hit_rect = PLAYER_HIT_RECT
@@ -215,3 +216,15 @@ class Item(pg.sprite.Sprite):
         self.type = type
         self.rect.center = pos
         self.pos = pos
+        self.tween = tween.easeInOutSine
+        self.step = 0
+        self.dir = 1
+
+    def update(self):
+        # bobbing motion
+        offset = BOB_RANGE * (self.tween(self.step / BOB_RANGE) - 0.5)
+        self.rect.centery = self.pos.y + offset * self.dir
+        self.step += BOB_SPEED
+        if self.step > BOB_RANGE:
+            self.step = 0
+            self.dir *= -1
